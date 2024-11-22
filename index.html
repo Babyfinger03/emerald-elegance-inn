@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerald Elegance Inn - Luxury Accommodations</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom Properties */
+        :root {
+            --primary-color: #8B7355; /* Warm brown */
+            --secondary-color: #D4AF37; /* Gold */
+            --text-color: #4A4238; /* Dark warm grey */
+            --light-bg: #F5F5DC; /* Beige */
+            --accent-beige: #E8DCC4; /* Lighter beige for elements */
+            --font-primary: 'Cormorant Garamond', serif;
+            --font-secondary: 'Montserrat', sans-serif;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-primary);
+            color: var(--primary-color);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            width: 100%;
+            background: var(--accent-beige);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(139, 115, 85, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: var(--font-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                        url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Booking Form */
+        .booking-form {
+            background: var(--accent-beige);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(139, 115, 85, 0.2);
+            width: 90%;
+            max-width: 1200px;
+            margin: -50px auto 0;
+            position: relative;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.8rem;
+            border: 1px solid #D4C5B1;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: white;
+        }
+
+        .search-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-btn:hover {
+            background: var(--secondary-color);
+        }
+                /* Rooms Section */
+                .rooms {
+            padding: 6rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .room-card {
+            background: var(--accent-beige);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(139, 115, 85, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .room-image {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .room-details {
+            padding: 1.5rem;
+        }
+
+        .room-price {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Amenities Section */
+        .amenities {
+            padding: 6rem 2rem;
+            background: var(--accent-beige);
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .amenity-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(139, 115, 85, 0.1);
+        }
+
+        .amenity-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-column h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .booking-form {
+                margin-top: -30px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">Emerald Elegance Inn</a>
+            <div class="nav-links">
+                <a href="#rooms">Rooms</a>
+                <a href="#amenities">Amenities</a>
+                <a href="#dining">Dining</a>
+                <a href="#spa">Spa</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Experience Luxury Redefined</h1>
+            <p>Where elegance meets exceptional service</p>
+        </div>
+    </section>
+
+    <!-- Booking Form -->
+    <form class="booking-form">
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Check-in Date</label>
+                <input type="date" required>
+            </div>
+            <div class="form-group">
+                <label>Check-out Date</label>
+                <input type="date" required>
+            </div>
+            <div class="form-group">
+                <label>Guests</label>
+                <select>
+                    <option>1 Guest</option>
+                    <option>2 Guests</option>
+                    <option>3 Guests</option>
+                    <option>4+ Guests</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>&nbsp;</label>
+                <button class="search-btn">Check Availability</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Rooms Section -->
+    <section class="rooms" id="rooms">
+        <h2 class="section-title">Luxury Accommodations</h2>
+        <div class="rooms-grid">
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3" alt="Deluxe Suite" class="room-image">
+                <div class="room-details">
+                    <h3>Deluxe Suite</h3>
+                    <p>Luxurious suite with city view and premium amenities</p>
+                    <p class="room-price">From ₹25,000/night</p>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3" alt="Executive Suite" class="room-image">
+                <div class="room-details">
+                    <h3>Executive Suite</h3>
+                    <p>Spacious suite with separate living area</p>
+                    <p class="room-price">From ₹35,000/night</p>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3" alt="Presidential Suite" class="room-image">
+                <div class="room-details">
+                    <h3>Presidential Suite</h3>
+                    <p>Ultimate luxury with panoramic views</p>
+                    <p class="room-price">From ₹50,000/night</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section class="amenities" id="amenities">
+        <h2 class="section-title">Premium Amenities</h2>
+        <div class="amenities-grid">
+            <div class="amenity-card">
+                <i class="fas fa-spa amenity-icon"></i>
+                <h3>Luxury Spa</h3>
+                <p>Rejuvenate your senses with our world-class spa treatments</p>
+            </div>
+            <div class="amenity-card">
+                <i class="fas fa-utensils amenity-icon"></i>
+                <h3>Fine Dining</h3>
+                <p>Experience culinary excellence at our restaurants</p>
+            </div>
+            <div class="amenity-card">
+                <i class="fas fa-swimming-pool amenity-icon"></i>
+                <h3>Infinity Pool</h3>
+                <p>Swim with breathtaking views of the city</p>
+            </div>
+            <div class="amenity-card">
+                <i class="fas fa-dumbbell amenity-icon"></i>
+                <h3>Fitness Center</h3>
+                <p>State-of-the-art equipment and personal trainers</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>Emerald Elegance Inn</h3>
+                <p>123 Luxury Avenue<br>Mumbai, India 400001</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#rooms">Rooms & Suites</a></li>
+                    <li><a href="#dining">Dining</a></li>
+                    <li><a href="#spa">Spa & Wellness</a></li>
+                    <li><a href="#events">Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li>Phone: +91 xxxxxxxxxx </li>
+                    <li>Email: info@emeraldelegance.com</li>
+                    <li>Reservations: book@emeraldelegance.com</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form validation
+        const bookingForm = document.querySelector('.booking-form');
+        bookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your booking request! We will contact you shortly.');
+        });
+    </script>
+</body>
+</html>
